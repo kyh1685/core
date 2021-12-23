@@ -1,5 +1,6 @@
 package hello.core.order;
 
+import hello.core.annotation.MainDiscountPolicy;
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor // final 붇은 필드의 생성자를 자동으로 생성
+//@RequiredArgsConstructor // final 붇은 필드의 생성자를 자동으로 생성
 public class OrderServiceImpl implements OrderService{
 
     // 인터페이스에만 의존해야 하는데 구현체에도 의지함(DIP 위반)
@@ -27,11 +28,11 @@ public class OrderServiceImpl implements OrderService{
         return memberRepository;
     }
 
-/*    @Autowired
-    public OrderServiceImpl(DiscountPolicy discountPolicy, MemberRepository memberRepository) {
+    @Autowired
+    public OrderServiceImpl(@MainDiscountPolicy DiscountPolicy discountPolicy, MemberRepository memberRepository) {
         this.discountPolicy = discountPolicy;
         this.memberRepository = memberRepository;
-    }*/
+    }
 
     @Override
     public Order createOrder(Long memberId, String itemName, int itemPrice) {
