@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -30,7 +31,6 @@ public class AllBeanTest {
 
         int rateDiscountPrice = discountService.discount(member, 20000, "rateDiscountPolicy");
         assertThat(rateDiscountPrice).isEqualTo(2000);
-
     }
 
     static class DiscountService{
